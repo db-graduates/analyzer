@@ -1,9 +1,7 @@
-package db.com.generator;
+package db.com.analyzer;
 
-import db.com.generator.message.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.LongDeserializer;
-import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +11,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.HashMap;
@@ -22,10 +19,10 @@ import java.util.Map;
 @SpringBootApplication
 @EnableKafka
 @EnableScheduling
-public class GeneratorApplication {
+public class AnalyzerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GeneratorApplication.class, args);
+        SpringApplication.run(AnalyzerApplication.class, args);
     }
 
     @KafkaListener(topics = "test", groupId = "random")

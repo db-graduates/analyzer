@@ -1,4 +1,4 @@
-package db.com.generator.message;
+package db.com.analyzer.message;
 
 import com.cf.data.model.poloniex.PoloniexChartData;
 
