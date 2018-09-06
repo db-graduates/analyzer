@@ -1,30 +1,75 @@
 package db.com.analyzer.message;
 
-import com.cf.data.model.poloniex.PoloniexChartData;
-
-import java.util.List;
+import java.math.BigDecimal;
 
 public class Message {
 
-    List<PoloniexChartData> chartDataList;
+    private long id;
 
-    public Message(List<PoloniexChartData> chartDataList) {
-        this.chartDataList = chartDataList;
+    private BigDecimal high;
+    private BigDecimal low;
+    private BigDecimal volume;
+    private BigDecimal quoteVolume;
+    private BigDecimal open;
+    private BigDecimal close;
+
+    public Message(){
     }
 
-    public List<PoloniexChartData> getChartDataList() {
-        return chartDataList;
+    public long getId() {
+        return id;
     }
 
-    public void setChartDataList(List<PoloniexChartData> chartDataList) {
-        this.chartDataList = chartDataList;
+    public void setId(long id) {
+        this.id = id;
     }
 
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "chartDataList=" + chartDataList +
-                '}';
+    public BigDecimal getHigh() {
+        return high;
     }
+
+    public void setHigh(BigDecimal high) {
+        this.high = high;
+    }
+
+    public BigDecimal getLow() {
+        return low;
+    }
+
+    public void setLow(BigDecimal low) {
+        this.low = low;
+    }
+
+    public BigDecimal getVolume() {
+        return volume;
+    }
+
+    public void setVolume(BigDecimal volume) {
+        this.volume = volume;
+    }
+
+    public BigDecimal getQuoteVolume() {
+        return quoteVolume;
+    }
+
+    public void setQuoteVolume(BigDecimal quoteVolume) {
+        this.quoteVolume = quoteVolume;
+    }
+
+    public BigDecimal getOpen() {
+        return open;
+    }
+
+    public void setOpen(BigDecimal open) {
+        this.open = open;
+    }
+
+    public BigDecimal getClose() {
+        return close;
+    }
+
+    public void setClose(BigDecimal close) {
+        this.close = close;
+    }
+
 }
