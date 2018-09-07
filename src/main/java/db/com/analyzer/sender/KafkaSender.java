@@ -14,6 +14,7 @@ public class KafkaSender implements Sender {
 
     @Autowired
     private KafkaTemplate<String, Message> kafkaTemplate;
+
     @Autowired
     private PredictService predictService;
 

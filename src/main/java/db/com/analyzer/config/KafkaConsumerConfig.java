@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import db.com.analyzer.sender.KafkaSender;
 import db.com.model.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -26,10 +28,16 @@ public class KafkaConsumerConfig {
     @Autowired
     private KafkaSender kafkaSender;
 
+    @Value("${kafka.consumer.group-id}")
+    private String groupId;
+
+    @Value("${kafka.bootstrapServer}")
+    private String bootstrapServer;
+
     private static final Logger LOG = LogManager.getLogger(KafkaSender.class);
 
 
-    @KafkaListener(topics = "test", groupId = "random")
+    @KafkaListener(topics = "${kafka.consumer.topic}", groupId = "${kafka.consumer.group-id}")
     public void listen(String message) {
         LOG.info("Received Messasge in group foo: " + message);
         try {
@@ -44,10 +52,10 @@ public class KafkaConsumerConfig {
         Map<String, Object> props = new HashMap<>();
         props.put(
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                "localhost:9092");
+                bootstrapServer);
         props.put(
                 ConsumerConfig.GROUP_ID_CONFIG,
-                "random");
+                groupId);
         props.put(
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class);
