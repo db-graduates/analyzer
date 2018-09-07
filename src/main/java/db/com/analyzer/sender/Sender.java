@@ -1,6 +1,7 @@
 package db.com.analyzer.sender;
 
-import db.com.analyzer.message.Message;
+
+import db.com.model.Message;
 
 public interface Sender {
     void sendMessage(Message message);

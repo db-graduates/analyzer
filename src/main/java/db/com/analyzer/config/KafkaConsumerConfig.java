@@ -1,9 +1,9 @@
 package db.com.analyzer.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import db.com.analyzer.message.Message;
+
 import db.com.analyzer.sender.KafkaSender;
-import lombok.SneakyThrows;
+import db.com.model.Message;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +35,7 @@ public class KafkaConsumerConfig {
         try {
             kafkaSender.sendMessage(objectMapper.readValue(message, Message.class));
         } catch (Exception e){
-
+            LOG.error(e.getMessage());
         }
     }
 

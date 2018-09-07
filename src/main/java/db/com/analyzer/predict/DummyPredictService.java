@@ -1,6 +1,6 @@
 package db.com.analyzer.predict;
 
-import db.com.analyzer.message.Message;
+import db.com.model.Message;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class DummyPredictService implements PredictService {
         message1.setClose(generateRandom(message.getClose()));
         message1.setLow(generateRandom(message.getLow()));
         message1.setOpen(generateRandom(message.getOpen()));
-        message1.setQuoteVolume(generateRandom(message.getQuoteVolume()));
+        message1.setValue(generateRandom(message.getValue()));
         message1.setVolume(generateRandom(message.getVolume()));
         return message1;
     }
